@@ -1,10 +1,17 @@
 #ifndef PHILO_H
-#define PHILO_H
+# define PHILO_H
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <pthread.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <pthread.h>
+
+# define FORK	"has taken a fork"
+# define SLEEP	"is sleeping"
+# define EAT	"is eating"
+# define THINK	"is thinking"
+
+
 
 typedef struct s_data
 {
@@ -20,6 +27,7 @@ typedef struct s_data
 
 typedef struct s_philo
 {
+	pthread_t		th; //
 	int				ph_id;
 	int				fork_left_id;
 	int				fork_right_id;
@@ -27,8 +35,9 @@ typedef struct s_philo
 	struct timeval	last_eat;
 }	t_philo;
 
-int	ft_atoi(const char *string);
-int parsing(char **argv, t_data *data);
+int		ft_atoi(const char *string);
+int		parsing(char **argv, t_data *data);
+void	create_philo(t_data *data);
 
 
 #endif
