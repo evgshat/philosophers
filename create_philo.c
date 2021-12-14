@@ -1,36 +1,29 @@
 #include "philo.h"
 
-void	func_a(void *idx)
+void *func_for_th(void *temp)
 {
-	printf("%d", idx);
+	t_philo	*philo;
+
+	philo = (t_philo *)temp;
+	printf("Thread %d was created\n", philo->ph_id);
+	return (NULL);
 }
 
-int	*create_thread(int num, t_data *data)
+void	create_philo(t_data *data, t_philo *philo)
 {
-	t_philo	philo[data->num_of_philos];
-	int		idx;
-	int		res_of_create_pth;
+	int	res_of_create_th;
+	int	count;
 
-	idx = 0;
-	while (idx != 2)
+	philo->ph_id = 0;
+	count = 0;
+
+	while (count < data->num_of_philos)
 	{
-		philo[idx]->ph_id = idx;
-		res_of_create_pth = pthread_create(&philo.th[idx], NULL, func_a, (void *)(&philo));
-		if (res_of_create_pth != 0)
-			error("Not create thread\n"); //могу ли я тут номер потока передать?
-		idx++;
-	}
-}
-
-void	create_philo(t_data *data)
-{
-	int		num;
-	t_data	data;
-
-	num = data->num_of_philos;
-	while (num > 0)
-	{
-		create_philo(num, &data);
-		num--;
+		philo->ph_id++;
+		res_of_create_th = pthread_create(&philo->th, NULL, func_for_th, (void *)(&philo->th));
+		usleep(200);
+		if (res_of_create_th != 0)
+			error("Thread was not created\n");
+		count++;
 	}
 }

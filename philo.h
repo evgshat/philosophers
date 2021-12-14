@@ -23,6 +23,7 @@ typedef struct s_data
 	struct timeval	start_time;
 	struct timeval	current_time;
 	pthread_mutex_t	mutex_forks[200];
+	pthread_t		th; //
 }	t_data;
 
 typedef struct s_philo
@@ -36,8 +37,8 @@ typedef struct s_philo
 }	t_philo;
 
 int		ft_atoi(const char *string);
-int		parsing(char **argv, t_data *data);
-void	create_philo(t_data *data);
-
+int		parsing(int argc, char **argv, t_data *data);
+void	error(char *mes);
+void	create_philo(t_data *data, t_philo *philo);
 
 #endif

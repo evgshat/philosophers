@@ -32,7 +32,7 @@ void *func_a(void *c)
 
 void *func_b(void *c)
 {
-	t_str *s;
+	t_str	*s;
 	long	ms;
 	long	cur;
 	long	res;
@@ -53,7 +53,7 @@ void *func_b(void *c)
 
 int main()
 {
-	t_str s;
+	t_str	s;
 
 	s.mes_a = "HelloA\n";
 	s.mes_b = "HelloB\n";

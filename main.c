@@ -2,8 +2,10 @@
 
 int main(int argc, char **argv)
 {
-	t_data		data;
-	pthread_t	thread_philo[200];
+	t_data	data;
+	t_philo	philo;
 
-	parsing(argv, &data);
+	parsing(argc, argv, &data);
+	printf("parsing is ok\n");
+	create_philo(&data, &philo);
 }
