@@ -9,21 +9,19 @@ void *func_for_th(void *temp)
 	return (NULL);
 }
 
-void	create_philo(t_data *data, t_philo *philo)
+void	create_philo(t_philo *philo)
 {
-	int	res_of_create_th;
-	int	count;
+	int	res;
+	int	id;
 
-	philo->ph_id = 0;
-	count = 0;
-
-	while (count < data->num_of_philos)
+	id = 0;
+	while (id < philo->data.num_of_philos)
 	{
-		philo->ph_id++;
-		res_of_create_th = pthread_create(&philo->th, NULL, func_for_th, (void *)(&philo->th));
+		philo[id].ph_id = id;
+		res = pthread_create(&(philo[id].th), NULL, func_for_th, (void *)(&philo[id]));
 		usleep(200);
-		if (res_of_create_th != 0)
+		if (res != 0)
 			error("Thread was not created\n");
-		count++;
+		id++;
 	}
 }

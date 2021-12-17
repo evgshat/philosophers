@@ -2,10 +2,13 @@
 
 int main(int argc, char **argv)
 {
+	t_philo	philo[200];
 	t_data	data;
-	t_philo	philo;
 
-	parsing(argc, argv, &data);
+	parsing(argc, argv, philo);
 	printf("parsing is ok\n");
-	create_philo(&data, &philo);
+	get_start_time(philo); //
+	printf("%ld", philo->data.start_time_ml);
+	create_philo(philo);
+	init_philo()
 }

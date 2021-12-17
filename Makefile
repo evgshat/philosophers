@@ -3,6 +3,7 @@ SRCS =  main.c \
 		error.c \
 		utils.c \
 		create_philo.c \
+		get_start_time.c \
 
 
 OBJS = $(SRCS:.c=.o)

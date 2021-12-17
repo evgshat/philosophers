@@ -8,7 +8,7 @@ int	parsing(int argc, char **argv, t_data *data)
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
 	data->time_to_sleep = ft_atoi(argv[4]);
-	data->time_must_eat = ft_atoi(argv[5]);
+	// data->time_must_eat = ft_atoi(argv[5]);
 
 	return (0);
 }
