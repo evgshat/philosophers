@@ -1,14 +1,20 @@
-SRCS =  main.c \
+SRCS =  init_philo.c \
+		main.c \
 		parsing.c \
 		error.c \
 		utils.c \
+		init_forks.c \
 		create_philo.c \
 		get_start_time.c \
+		philo_eat.c \
+		common.c \
+		philo_sleep.c \
+		philo_think.c \
+		ft_usleep.c \
 
 
-OBJS = $(SRCS:.c=.o)
-
-OBJS_B = $(SRCS_B:.c=.o)
+#OBJS = $(SRCS:.c=.o)
+OBJS = $(patsubst %.c, %.o, $(SRCS))
 
 NAME = philo
 CFLAGS = -Werror -Wall -Wextra -g
@@ -17,13 +23,13 @@ RM = rm -rf
 
 HEADER = so_long.h
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
 %.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
-all:	$(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+all: $(NAME)
 
 clean:
 		$(RM) $(OBJS)
