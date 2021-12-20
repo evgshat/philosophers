@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   common.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/21 00:35:47 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/12/21 00:47:28 by lcharlet         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-void write_status(t_data *data, int id, char *status)
+void	write_status(t_data *data, int id, char *status)
 {
-	long cur_time;
+	long	cur_time;
 
 	get_start_time(data, 0);
 	cur_time = data->cur_time_ml - data->start_time_ml;

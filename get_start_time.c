@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_start_time.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/21 00:36:27 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/12/21 00:41:20 by lcharlet         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-static void ft_gettimeofday(struct timeval *time, long *ml_time)
+static void	ft_gettimeofday(struct timeval *time, long *ml_time)
 {
 	int	res;
 

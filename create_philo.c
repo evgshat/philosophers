@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_philo.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/21 00:36:09 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/12/21 00:47:46 by lcharlet         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-void *func_for_th(void *temp)
+void	*func_for_th(void *temp)
 {
 	t_philo	*philo;
 
@@ -26,7 +38,8 @@ void	create_philo(t_philo *philo)
 	while (id < philo->data->num_of_philos)
 	{
 		philo[id].ph_id = id;
-		res = pthread_create(&(philo[id].ph_th), NULL, func_for_th, (void *)(&philo[id]));
+		res = pthread_create(&(philo[id].ph_th),
+				NULL, func_for_th, (void *)(&philo[id]));
 		if (res != 0)
 			error("Thread was not created\n");
 		id++;

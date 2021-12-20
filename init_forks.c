@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_forks.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/21 00:36:35 by lcharlet          #+#    #+#             */
+/*   Updated: 2021/12/21 00:41:06 by lcharlet         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-static void create_mutex(pthread_mutex_t *mutex)
+static void	create_mutex(pthread_mutex_t *mutex)
 {
 	int	res;
 
