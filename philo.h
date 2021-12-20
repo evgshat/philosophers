@@ -19,7 +19,7 @@ typedef struct s_data
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				time_must_eat;
+    unsigned int	time_must_eat;
 	struct timeval	start_time;
 	struct timeval	current_time;
 	long 			start_time_ml;
@@ -35,7 +35,8 @@ typedef struct s_philo
 	int				ph_id;
 	int				fork_left_id;
 	int				fork_right_id;
-	int				count_eating;
+	unsigned int	count_eating;
+    long 			prev_time_eat_ml;
 	struct timeval	last_eat;
 	t_data			*data;
 }	t_philo;
@@ -49,8 +50,10 @@ void	init_forks(t_data *data);
 void	init_philo(t_data *data, t_philo *philo);
 void    write_status(t_data *data, int id, char *status);
 void    philo_eat(t_philo *philo, t_data *data);
-void philo_sleep(t_philo *philo, t_data *data);
-void philo_think(t_philo *philo, t_data *data);
-void ft_usleep(t_data *data, int time);
+void    philo_sleep(t_philo *philo, t_data *data);
+void    philo_think(t_philo *philo, t_data *data);
+void    ft_usleep(t_data *data, int time);
+void    get_time_eat(t_philo *philo);
+void    observer(t_philo *philo, t_data *data, int flag);
 
 #endif

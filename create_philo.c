@@ -7,9 +7,10 @@ void *func_for_th(void *temp)
 	philo = (t_philo *)temp;
 	if (philo->ph_id % 2 == 0)
 		usleep(200);
-	while (1)
+	while (1 && (philo->count_eating != philo->data->time_must_eat))
 	{
 		philo_eat(philo, philo->data);
+		philo->count_eating++;
 		philo_sleep(philo, philo->data);
 		philo_think(philo, philo->data);
 	}

@@ -11,6 +11,8 @@ SRCS =  init_philo.c \
 		philo_sleep.c \
 		philo_think.c \
 		ft_usleep.c \
+		observer.c \
+		get_time_eat.c \
 
 
 #OBJS = $(SRCS:.c=.o)

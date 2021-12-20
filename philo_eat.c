@@ -6,8 +6,13 @@ void philo_eat(t_philo *philo, t_data *data)
 	write_status(data, philo->ph_id, FORK);
 	pthread_mutex_lock(&(data->mutex_forks[philo->fork_right_id]));
 	write_status(data, philo->ph_id, FORK);
+    if (philo->count_eating == 0)
+        observer(philo, data, 0);
+	if (philo->count_eating > 0)
+        observer(philo, data, 1);
 	write_status(data, philo->ph_id, EAT);
-	ft_usleep(data, data->time_to_eat);
+    ft_usleep(data, data->time_to_eat);
+    get_time_eat(philo);
 	pthread_mutex_unlock(&(data->mutex_forks[philo->fork_left_id]));
 	pthread_mutex_unlock(&(data->mutex_forks[philo->fork_right_id]));
 }
