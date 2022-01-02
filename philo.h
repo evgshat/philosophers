@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:48:06 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/21 00:49:20 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/02 18:21:07 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_data
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	unsigned int	time_must_eat;
+	unsigned int				time_must_eat;
 	struct timeval	start_time;
 	struct timeval	current_time;
 	long			start_time_ml;
@@ -54,7 +54,7 @@ typedef struct s_philo
 }	t_philo;
 
 int		ft_atoi(const char *string);
-int		parsing(int argc, char **argv, t_data *data);
+void	parsing(int argc, char **argv, t_data *data);
 void	error(char *mes);
 void	create_philo(t_philo philo[200]);
 void	get_start_time(t_data *data, int flag);
@@ -66,6 +66,6 @@ void	philo_sleep(t_philo *philo, t_data *data);
 void	philo_think(t_philo *philo, t_data *data);
 void	ft_usleep(t_data *data, int time);
 void	get_time_eat(t_philo *philo);
-void	observer(t_philo *philo, t_data *data, int flag);
+void	check_to_die(t_philo *philo, t_data *data);
 
 #endif

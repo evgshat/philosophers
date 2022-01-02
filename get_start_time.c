@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:27 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/21 00:41:20 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/02 18:57:24 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void	get_start_time(t_data *data, int flag)
 	if (flag == 1)
 		ft_gettimeofday(&data->start_time, &data->start_time_ml);
 	else
+	{
 		ft_gettimeofday(&data->current_time, &data->cur_time_ml);
+	}
 }

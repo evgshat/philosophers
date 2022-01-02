@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:09 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/21 00:47:46 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/02 18:13:22 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,22 @@ void	create_philo(t_philo *philo)
 				NULL, func_for_th, (void *)(&philo[id]));
 		if (res != 0)
 			error("Thread was not created\n");
+		id++;
+	}
+}
+
+void	close_philo(t_philo *philo)
+{
+	int	res;
+	int	id;
+
+	id = 0;
+	while (id < philo->data->num_of_philos)
+	{
+		philo[id].ph_id = id;
+		res = pthread_detach(philo[id].ph_th);
+		if (res != 0)
+			error("Thread detach failed!\n");
 		id++;
 	}
 }

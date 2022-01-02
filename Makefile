@@ -11,7 +11,7 @@ SRCS =  init_philo.c \
 		philo_sleep.c \
 		philo_think.c \
 		ft_usleep.c \
-		observer.c \
+		check_to_die.c \
 		get_time_eat.c \
 
 

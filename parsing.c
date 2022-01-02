@@ -6,13 +6,23 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:37:06 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/21 00:40:25 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/02 18:07:46 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	parsing(int argc, char **argv, t_data *data)
+int	check_args(t_data *data)
+{
+	if (data->num_of_philos <= 0 || data->time_to_die <= 0
+		|| data->time_to_eat <= 0 || data->time_to_sleep <= 0)
+		error("Args is not correct\n");
+	if (data->num_of_philos > 200)
+		error("Too many philos\n");
+	return (0);
+}
+
+void parsing(int argc, char **argv, t_data *data)
 {
 	if (argc < 5 || argc > 6)
 		error("Args is not correct\n");
@@ -24,5 +34,5 @@ int	parsing(int argc, char **argv, t_data *data)
 		data->time_must_eat = ft_atoi(argv[5]);
 	else
 		data->time_must_eat = -1;
-	return (0);
+	check_args(data);
 }

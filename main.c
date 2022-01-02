@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:55 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/21 00:45:18 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/02 18:20:49 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	init_forks(&data);
 	init_philo(&data, philo);
 	create_philo(philo);
-	while (++i < data.num_of_philos)
-		pthread_join(philo[i].ph_th, NULL);
+	check_to_die(philo, &data);
+	// while (++i < data.num_of_philos)
+	// 	pthread_join(philo[i].ph_th, NULL);
 }
