@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:15 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/21 00:41:57 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 17:26:31 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-void	error(char *mes)
+int	error(char *mes)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(mes, 2);
-	exit (1);
+	return (-1);
 }

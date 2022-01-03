@@ -6,28 +6,29 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:35 by lcharlet          #+#    #+#             */
-/*   Updated: 2021/12/21 00:41:06 by lcharlet         ###   ########lyon.fr   */
+/*   Updated: 2022/01/03 17:27:11 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	create_mutex(pthread_mutex_t *mutex)
+static int	create_mutex(pthread_mutex_t *mutex)
 {
 	int	res;
 
 	res = pthread_mutex_init(mutex, NULL);
 	if (res != 0)
-		error("Mutex was not created\n");
+		return (error("Mutex was not created\n"));
+	return (0);
 }
 
-void	init_forks(t_data *data)
+int	init_forks(t_data *data)
 {
 	int	id;
 
 	id = -1;
 	while (++id < data->num_of_philos)
-		create_mutex(&data->mutex_forks[id]);
-	create_mutex(&data->mutex_for_write);
-	create_mutex(&data->mutex_for_eat);
+		if (create_mutex(&data->mutex_forks[id]) == -1)
+			return (-1);
+	return (create_mutex(&data->mutex_for_write) + create_mutex(&data->mutex_for_eat));
 }

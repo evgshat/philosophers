@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:36:09 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/01/02 18:13:22 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/03 17:50:25 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,22 @@ void	*func_for_th(void *temp)
 	philo = (t_philo *)temp;
 	if (philo->ph_id % 2 == 0)
 		usleep(200);
-	while (1 && (philo->count_eating != philo->data->time_must_eat))
+	while (1)
 	{
 		philo_eat(philo, philo->data);
 		philo->count_eating++;
+		if (philo->count_eating == philo->data->time_must_eat)
+		{
+			philo->is_fed_up = 1;
+			return NULL;
+		}
 		philo_sleep(philo, philo->data);
 		philo_think(philo, philo->data);
 	}
 	return (NULL);
 }
 
-void	create_philo(t_philo *philo)
+int	create_philo(t_philo *philo)
 {
 	int	res;
 	int	id;
@@ -41,9 +46,10 @@ void	create_philo(t_philo *philo)
 		res = pthread_create(&(philo[id].ph_th),
 				NULL, func_for_th, (void *)(&philo[id]));
 		if (res != 0)
-			error("Thread was not created\n");
+			return (error("Thread was not created\n"));
 		id++;
 	}
+	return (0);
 }
 
 void	close_philo(t_philo *philo)

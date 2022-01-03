@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:48:06 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/01/02 18:21:07 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/03 17:40:01 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ typedef struct s_data
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	unsigned int				time_must_eat;
+	unsigned int	time_must_eat;
 	struct timeval	start_time;
 	struct timeval	current_time;
-	long			start_time_ml;
-	long			cur_time_ml;
+	unsigned long	start_time_ml;
+	unsigned long	cur_time_ml;
 	pthread_mutex_t	mutex_forks[200];
 	pthread_mutex_t	mutex_for_write;
 	pthread_mutex_t	mutex_for_eat;
+	int				philos_fed_up;
 }	t_data;
 
 typedef struct s_philo
@@ -48,18 +49,19 @@ typedef struct s_philo
 	int				fork_left_id;
 	int				fork_right_id;
 	unsigned int	count_eating;
-	long			prev_time_eat_ml;
+	unsigned long	prev_time_eat_ml;
 	struct timeval	last_eat;
 	t_data			*data;
+	int				is_fed_up;
 }	t_philo;
 
 int		ft_atoi(const char *string);
-void	parsing(int argc, char **argv, t_data *data);
-void	error(char *mes);
-void	create_philo(t_philo philo[200]);
-void	get_start_time(t_data *data, int flag);
-void	init_forks(t_data *data);
-void	init_philo(t_data *data, t_philo *philo);
+int		parsing(int argc, char **argv, t_data *data);
+int		error(char *mes);
+int		create_philo(t_philo philo[200]);
+int		get_start_time(t_data *data, int flag);
+int		init_forks(t_data *data);
+int		init_philo(t_data *data, t_philo *philo);
 void	write_status(t_data *data, int id, char *status);
 void	philo_eat(t_philo *philo, t_data *data);
 void	philo_sleep(t_philo *philo, t_data *data);

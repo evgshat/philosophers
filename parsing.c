@@ -6,7 +6,7 @@
 /*   By: lcharlet <lcharlet@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 00:37:06 by lcharlet          #+#    #+#             */
-/*   Updated: 2022/01/02 18:07:46 by lcharlet         ###   ########.fr       */
+/*   Updated: 2022/01/03 17:20:23 by lcharlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	check_args(t_data *data)
 {
 	if (data->num_of_philos <= 0 || data->time_to_die <= 0
 		|| data->time_to_eat <= 0 || data->time_to_sleep <= 0)
-		error("Args is not correct\n");
+		return (error("Args is not correct\n"));
 	if (data->num_of_philos > 200)
-		error("Too many philos\n");
+		return (error("Too many philos\n"));
 	return (0);
 }
 
-void parsing(int argc, char **argv, t_data *data)
+int parsing(int argc, char **argv, t_data *data)
 {
 	if (argc < 5 || argc > 6)
 		error("Args is not correct\n");
@@ -34,5 +34,5 @@ void parsing(int argc, char **argv, t_data *data)
 		data->time_must_eat = ft_atoi(argv[5]);
 	else
 		data->time_must_eat = -1;
-	check_args(data);
+	return (check_args(data));
 }
